@@ -17,9 +17,30 @@
 #pragma once
 
 #ifdef VIA_ENABLE
-/* VIA configuration. */
 #    define DYNAMIC_KEYMAP_LAYER_COUNT 4
 #endif // VIA_ENABLE
+
+// config.h 内に以下を追加
+#ifndef SHARED_EP_ENABLE
+#    define SHARED_EP_ENABLE yes
+#endif
+
+#ifndef KEYBOARD_SHARED_EP
+#    define KEYBOARD_SHARED_EP yes
+#endif
+
+// もし USB サスペンド回避が必要なら
+#ifndef NO_USB_SUSPEND
+#    define NO_USB_SUSPEND
+#endif
+
+// ウォッチドッグの有効化（必要に応じて）
+#ifndef WATCHDOG_ENABLE
+#    define WATCHDOG_ENABLE yes
+#endif
+#ifndef WATCHDOG_TIMEOUT
+#    define WATCHDOG_TIMEOUT 3000 // 3000msなど適切なタイムアウト時間に設定
+#endif
 
 #ifndef __arm__
 /* Disable unused features. */
